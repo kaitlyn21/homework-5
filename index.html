@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+ <html ng-app="list">
+ <head>
+	<link rel="stylesheet" href="bootstrap.min.css" />
+	<link rel="stylesheet" href="style.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+	<script src="app.js"></script>
+	
+ </head>
+ <body ng-controller="linkController as link">
+	<h1>Angular Tutorials</h1>
+	<pre>Want to learn all about Angular.js??? Here 
+are some tutorials to get you started! </pre>
+	<div><p>Search: <input type="text" ng-model="search"></p></div>
+	<table align="center">
+	<thead>
+		<tr>
+		<th><a href="" ng-click="orderByField='title'; reverseSort = !reverseSort">Title</a></th>
+		<th><a href="" ng-click="orderByField='image'; reverseSort = !reverseSort">Image</a></th>
+		<th><a href="" ng-click="orderByField='author'; reverseSort = !reverseSort">Author</a></th>
+		<th><a href="" ng-click="orderByField='url'; reverseSort = !reverseSort">Link</a></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="link in links | orderBy:orderByField:reverseSort | filter:search">
+		<td>{{link.title}}</td>
+		<td><img ng-src="{{link.image}}"/></td>
+		<td>{{link.author}}</td>
+		<td><a ng-href="/{{link.url}}">{{link.url}}</a></td>
+		</tr>
+	</tbody>
+ </body>
+ </html>
+ 
